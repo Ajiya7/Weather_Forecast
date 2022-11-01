@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><h1>Weather Forecast</h1></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fasthand&family=Old+Standard+TT&display=swap" rel="stylesheet">
+</head>
+<body> 
+    <header class="header jumbotron bg-dark position-relative ">
+        <h1 class="heading text-white text-center font-weight-bold">Weather Dashboard</h1>
+    </header>
+
+    <div class="container row">
+
+        <form class="col-sm-4 bg-secondary row ml-1">
+              <label><h3>Search for a City:</h3></label>
+              <input type="text" class="form-control col-9" id="input" placeholder="Seattle">
+              <button id="submit" class="btn btn-primary col-3">Search</button>
+              <ul class="list-group"></ul>
+        </form>
+
+        <div class="main-container col-sm-8 ml-2">
+            <div id="todays-weather" class="card col-12">
+                <h2 id="city-date"></h2>
+                <img id="icon" src="" class="col-4 col-sm-2"></img>
+                <h4 id="temp">Temperature:</h4>
+                <h4 id="humidity">Humidity:</h4>
+                <h4 id="wind-speed">Wind Speed:</h4>
+                <h4 id="uv-index-container"><span id="uv-index">UV Index:</span></h4>
+            </div>
+            <h3 class="my-2 col-12">5-Day Forecast:</h3>
+            <div id="content2-container" class="col-sm row"></div>
+        </div> 
+
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script src="./assets/js/script.js"></script>
+</html>
