@@ -5,7 +5,7 @@ var Temprature = $("#temp");
 var Humidity = $("#humidity");
 var wind = $("#wind-speed");
 var seconadryContainer = $("#content2-container");
-var apikey = "735d63d6d5691921b415ae3835edf890";
+var apikey = "f4299bef35c7fb3410eeb230e66758d1";
 
 searchbtn.on("click", function (event) {
     event.preventDefault();
@@ -30,6 +30,44 @@ function Api(city) {
         Temprature.text( "Temperature: " + response.main.temp + " F");
         Humidity.text( "Humidity: " + response.main.humidity + "%");
         wind.text( "Wind Speed: " + response.wind.speed + " MPH");
+
+        var lon = response.coord.lon;
+        var lat = response.coord.lat;
+
+        Forecasthandler (lon, lat);
     })
 }
 
+function Forecasthandler (lon, lat){
+    var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=hourly&appid=" + apikey;
+    $.ajax({   
+        url: queryURL,
+        method: "GET"
+    })
+    .then(function(response2){
+        seconadryContainer.empty();
+        for (var i = 1; i < 6; i++){
+
+            var fiveDayContainer = $('<div id="fiveDayWeather" class="card p-2 bg-primary text-light col-sm row m-1">');
+            var fiveCityDate = $('<p id="five-city-date">');
+            var fiveCityIcon = $('<img id="icon2" src="" class="col-9"></img>');
+            var fiveCityTemp = $('<p id="five-city-temp">');
+            var fiveCityHumidity = $('<p id="five-city-humidity">');
+            var fivecityWind = $('<p id="five-city-wind">');
+
+            seconadryContainer.append(fiveDayContainer);
+            fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity, fivecityWind);
+
+            var newDate = moment().add(i, 'days');
+            var nextDate = newDate.format("dddd, MMM DD");
+
+            fiveCityDate.text(nextDate);
+            fiveCityTemp.text("Temp: " + response2.daily[i].temp.day + " F");
+            fiveCityHumidity.text("Humidity: " + response2.daily[i].humidity + "%")
+            fivecityWind.text("Wind Speed: "+ response2.daily[i].wind_speed + " MPH" )
+            var iconCode2 = response2.daily[i].weather[0].icon;
+            var iconURL2 = "http://openweathermap.org/img/wn/" + iconCode2 + "@2x.png";
+            fiveCityIcon.attr("src", iconURL2);
+        }
+    })
+}
