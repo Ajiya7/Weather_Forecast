@@ -11,6 +11,7 @@ searchbtn.on("click", function (event) {
     event.preventDefault();
     var city = $("#input").val().trim();
     Api(city)
+    searchHandler(city);
   });
 
 var today = moment();
@@ -70,3 +71,29 @@ function Forecasthandler (lon, lat){
         }
     })
 }
+
+var searchedCityContainer = $(".list-group");
+var savedCitiesJSON = localStorage.getItem("cities");
+var savedCities = savedCitiesJSON ? JSON.parse(savedCitiesJSON): [];
+if (savedCities.length){
+Api(savedCities[savedCities.length -1]);
+}
+for (var i = 0; i < savedCities.length; i++){
+    searchedButton(savedCities[i]);
+}
+function searchHandler(city){
+    savedCities.push(city);
+    localStorage.setItem("cities", JSON.stringify(savedCities));
+    searchedButton(city);
+}
+// Append search buttons
+function searchedButton (city){
+    var searchedCity = $('<button class="list-group-item"></button>');
+    searchedCityContainer.append(searchedCity);
+    searchedCity.text(city);
+    searchedCity.data("city", city);
+}
+ searchedCityContainer.on("click", ".list-group-item", function (event){
+     event.preventDefault();
+    Api($(this).data("city"));
+ })
