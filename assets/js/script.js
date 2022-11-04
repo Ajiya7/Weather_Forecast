@@ -47,19 +47,18 @@ function Forecasthandler (lon, lat){
     .then(function(response2){
         seconadryContainer.empty();
         for (var i = 1; i < 6; i++){
-
-            var fiveDayContainer = $('<div id="fiveDayWeather" class="card p-2 bg-primary text-light col-sm row m-1">');
-            var fiveCityDate = $('<p id="five-city-date">');
-            var fiveCityIcon = $('<img id="icon2" src="" class="col-9"></img>');
-            var fiveCityTemp = $('<p id="five-city-temp">');
-            var fiveCityHumidity = $('<p id="five-city-humidity">');
-            var fivecityWind = $('<p id="five-city-wind">');
+            var fiveDayContainer = $('<div class="fiveDayWeather">');
+            var fiveCityDate = $('<p class="five-city-date">');
+            var fiveCityIcon = $('<img class="icon2 " src=""></img>');
+            var fiveCityTemp = $('<p class="five-city-temp">');
+            var fiveCityHumidity = $('<p class="five-city-humidity">');
+            var fivecityWind = $('<p class="five-city-wind">');
 
             seconadryContainer.append(fiveDayContainer);
             fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity, fivecityWind);
 
             var newDate = moment().add(i, 'days');
-            var nextDate = newDate.format("dddd, MMM DD");
+            var nextDate = newDate.format("ddd, MMM DD");
 
             fiveCityDate.text(nextDate);
             fiveCityTemp.text("Temp: " + response2.daily[i].temp.day + " F");

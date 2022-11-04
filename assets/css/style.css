@@ -2,3 +2,26 @@ body{
     font-family: 'Fasthand', cursive;
     font-family: 'Old Standard TT', serif;
 }
+
+.fiveDayWeather{
+    outline: solid black 2px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    max-width: 200px;
+    background-color:gray;
+    color: white;
+}
+
+.icon2{
+    height: 100px;
+    width: 100px;
+}
+
+.search{
+    max-height: 200px;
+}
+
+.containers{
+    margin-left: 365px;
+}
