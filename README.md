@@ -30,6 +30,15 @@ THEN I am again presented with current and future conditions for that city
 
 ## Usage
 
+* The following image shows the web application's appearance and functionality:
+
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Seattle.](./Assets/images/Screenshot%202022-11-04%20at%204.57.35%20AM.png)
+
+
+## Credits
+
+Used the [5 Day Weather Forecast API](https://openweathermap.org/forecast5) to get the data being used in the Application
+
 ## Contact Me
 
 *  Instagram: _ajiya
@@ -38,3 +47,4 @@ THEN I am again presented with current and future conditions for that city
 ### Anyone Can Contribute
 
 ### Repo link: https://github.com/Ajiya7/Weather_Forecast
+### Project link: https://ajiya7.github.io/Weather_Forecast/
